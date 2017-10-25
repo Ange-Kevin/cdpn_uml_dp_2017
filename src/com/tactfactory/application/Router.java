@@ -2,8 +2,9 @@ package com.tactfactory.application;
 
 import java.util.ArrayList;
 
-import com.tactfactory.ihm.controller.Controller;
-import com.tactfactory.ihm.controller.impl.UselessController;
+import com.tactfactory.controller.Controller;
+import com.tactfactory.controller.impl.EmployeController;
+import com.tactfactory.controller.impl.UselessController;
 import com.tactfactory.ihm.frame.Frame;
 
 /** Manage the IHM screen. */
@@ -21,6 +22,7 @@ public class Router {
         this.controllers = new ArrayList<ControllerRouter>();
 
         this.add(new UselessController());
+        this.add(new EmployeController());
     }
 
     protected Router getInstance() {

@@ -29,6 +29,7 @@ public class MainFrame extends Frame {
         panel.add(generateAdText());
         panel.add(new GoToButton("Coucou", "hello"));
         panel.add(new GoToButton("Menu", "menu"));
+        panel.add(new GoToButton("Employe", "listEmploye"));
 
         panel.setLayout(subLayout);
 

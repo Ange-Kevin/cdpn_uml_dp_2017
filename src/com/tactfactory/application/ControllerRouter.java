@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.tactfactory.ihm.controller.Controller;
+import com.tactfactory.controller.Controller;
 import com.tactfactory.ihm.frame.Frame;
 
 public class ControllerRouter {

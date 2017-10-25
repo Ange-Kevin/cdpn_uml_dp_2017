@@ -1,6 +1,6 @@
-package com.tactfactory.ihm.controller.impl;
+package com.tactfactory.controller.impl;
 
-import com.tactfactory.ihm.controller.Controller;
+import com.tactfactory.controller.Controller;
 import com.tactfactory.ihm.frame.Frame;
 import com.tactfactory.ihm.frame.impl.MainFrame;
 import com.tactfactory.ihm.frame.impl.text.HelloFrame;

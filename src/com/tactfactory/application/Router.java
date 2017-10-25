@@ -1,63 +1,58 @@
 package com.tactfactory.application;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
+import com.tactfactory.ihm.controller.Controller;
+import com.tactfactory.ihm.controller.impl.UselessController;
 import com.tactfactory.ihm.frame.Frame;
-import com.tactfactory.ihm.frame.impl.MainFrame;
-import com.tactfactory.ihm.frame.impl.text.HelloFrame;
-import com.tactfactory.ihm.frame.impl.text.MenuFrame;
 
 /** Manage the IHM screen. */
 public class Router {
-    private Map<Class<?>, Frame> frames;
-    private Class<? extends Frame> active;
+    private Frame active = null;
 
-    private static Router instance = null;
+    private static volatile Router instance = null;
+    private ArrayList<ControllerRouter> controllers;
 
     static {
         Router.instance = new Router();
     }
 
     private Router() {
-        this.frames = new HashMap<>();
+        this.controllers = new ArrayList<ControllerRouter>();
 
-        this.add(new MainFrame());
-        this.add(new HelloFrame());
-        this.add(new MenuFrame());
+        this.add(new UselessController());
     }
 
     protected Router getInstance() {
         return Router.instance;
     }
 
-    /** Record the given frame. */
-    private boolean add(Frame newFrame) {
-        newFrame.initialize();
-
-        return this.frames.put(newFrame.getClass(), newFrame) == null;
+    /** Record the given Controller. */
+    private boolean add(Controller controller) {
+        return this.controllers.add(new ControllerRouter(controller));
     }
 
-    /** Go to given frame. */
-    public static boolean goTo(Class<? extends Frame> frameClass) {
-        if (frameClass.equals(instance.active)) {
-            return true;
-        }
+    /** Go to required route. */
+    public static boolean goTo(String routeName) {
+        routeName += "Action";
 
-        Frame frame = instance.frames.get(frameClass);
+        for (ControllerRouter controller : instance.controllers) {
+            Frame frame = controller.invoke(routeName);
 
-        if (frame != null) {
-            if (instance.active != null) {
-                Frame current = instance.frames.get(instance.active);
+            if (frame != null) { // New frame loaded.
+                if (instance.active != null) {
+                    Frame current = instance.active;
 
-                frame.setLocation(current.getLocation());
-                current.setVisible(false);
+                    frame.setLocation(current.getLocation());
+                    current.setVisible(false);
+                }
+
+                frame.initialize();
+                frame.setVisible(true);
+                instance.active = frame;
+
+                return true;
             }
-
-            frame.setVisible(true);
-            instance.active = frameClass;
-
-            return true;
         }
 
         return false;

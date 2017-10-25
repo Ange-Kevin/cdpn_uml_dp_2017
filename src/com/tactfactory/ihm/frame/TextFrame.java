@@ -6,7 +6,6 @@ import java.awt.Container;
 import javax.swing.JTextField;
 
 import com.tactfactory.ihm.button.impl.GoToButton;
-import com.tactfactory.ihm.frame.impl.MainFrame;
 
 @SuppressWarnings("serial")
 public abstract class TextFrame extends Frame {
@@ -25,7 +24,7 @@ public abstract class TextFrame extends Frame {
         textField.setEditable(false);
 
         pane.add(textField);
-        pane.add(new GoToButton("Back", MainFrame.class), BorderLayout.EAST);
+        pane.add(new GoToButton("Back", "main"), BorderLayout.EAST);
 
         return pane;
     }

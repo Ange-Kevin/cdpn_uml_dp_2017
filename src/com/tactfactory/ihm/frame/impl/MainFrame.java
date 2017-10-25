@@ -9,8 +9,6 @@ import javax.swing.JTextField;
 
 import com.tactfactory.ihm.button.impl.GoToButton;
 import com.tactfactory.ihm.frame.Frame;
-import com.tactfactory.ihm.frame.impl.text.HelloFrame;
-import com.tactfactory.ihm.frame.impl.text.MenuFrame;
 
 @SuppressWarnings("serial")
 public class MainFrame extends Frame {
@@ -29,8 +27,8 @@ public class MainFrame extends Frame {
         GridLayout subLayout = new GridLayout(10, 1);
 
         panel.add(generateAdText());
-        panel.add(new GoToButton("Coucou", HelloFrame.class));
-        panel.add(new GoToButton("Menu", MenuFrame.class));
+        panel.add(new GoToButton("Coucou", "hello"));
+        panel.add(new GoToButton("Menu", "menu"));
 
         panel.setLayout(subLayout);
 

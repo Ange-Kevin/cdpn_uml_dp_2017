@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import com.tactfactory.application.Router;
-import com.tactfactory.ihm.frame.Frame;
 
 @SuppressWarnings("serial")
 public class GoToButton extends JButton {
@@ -14,7 +13,7 @@ public class GoToButton extends JButton {
     public GoToButton() {
     }
 
-    public GoToButton(Class<? extends Frame> destination) {
+    public GoToButton(String destination) {
         this();
 
         this.addActionListener(new ActionListener() {
@@ -26,7 +25,7 @@ public class GoToButton extends JButton {
         });
     }
 
-    public GoToButton(String label, Class<? extends Frame> destination) {
+    public GoToButton(String label, String destination) {
         this(destination);
 
         this.setText(label);

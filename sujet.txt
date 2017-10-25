@@ -4,3 +4,5 @@ On pourrait par exemple avoir un menu en premier écran, permettant de lancer d'
 2) Centraliser la gestion de changement de vue à l'intérieur d'une seule classe en Singletton.
 
 3) on va maintenant gérer les écrans en utilisant un DP MVC.
+
+4) Nos derniers écrans n'avaient pas de modèle. Nous allons faire un CRUD d'employés. Nous utiliserons une classe qui simulera une DAO ainsi que le DB derière. Faire le CRUD complet.
